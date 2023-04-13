@@ -1,0 +1,47 @@
+class prenda{
+	
+	var preciobase
+	var estado
+	var tipo
+	method precio()= preciobase - estado.descuento(preciobase)
+}
+
+class nueva{
+
+	method descuento(preciobase)=0
+}
+
+class promocion{
+
+	var valorfijo
+	method descuento(preciobase)= valorfijo
+}
+
+class liquidacion{
+
+	method descuento(preciobase)=preciobase / 2
+}
+
+class venta{
+	
+	var prendas=[]
+	var fechaventa
+	var formapago
+	
+	method cantidadprendas()=prendas.length()
+	method preciototal()=prendas.sum(p=>p.precio()) 
+	method precioventa()= preciototal() + formapago.interes(preciototal)
+
+}
+
+class tarjeta{
+	
+	var cantidadcuotas
+	var coeficientefijo
+	method interes(preciototal)=cantidadcuotas * coeficientefijo * preciototal * 0.01
+}
+
+class efectivo{
+
+	method interes(preciototal)=0
+}
