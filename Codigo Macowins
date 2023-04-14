@@ -31,7 +31,6 @@ class venta{
 	method cantidadprendas()=prendas.length()
 	method preciototal()=prendas.sum(p=>p.precio()) 
 	method precioventa()= preciototal() + formapago.interes(preciototal)
-
 }
 
 class tarjeta{
@@ -44,4 +43,13 @@ class tarjeta{
 class efectivo{
 
 	method interes(preciototal)=0
+}
+
+object tienda{
+
+	var ventas=[]
+	method totalvendidoeldia(dia)=ventas.filter(fechaventa=dia).sum{v=>v.precioventa()}
+	method cargarventa(venta){
+		ventas.add(venta)
+	}
 }
